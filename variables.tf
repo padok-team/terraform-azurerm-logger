@@ -1,20 +1,33 @@
-variable "example_of_required_variable" {
-  type        = string
-  description = "Short description of the variable"
-}
-
-variable "example_of_variable_with_default_value" {
-  type        = string
-  description = "Short description of the variable"
-  default     = "default_value"
-}
-
-variable "example_with_validation" {
+variable "resources" {
+  description = "The list of resources id to monitor"
   type        = list(string)
-  description = "Short description of the variable"
+}
 
-  validation {
-    condition     = length(var.example_with_validation) >= 2
-    error_message = "Error message which explains what's required and finished with a dot ."
+variable "name" {
+  description = "The name of your diagnostic settings resources"
+  type        = string
+}
+
+variable "resource_group_name" {
+  description = "The name of the resource group"
+  type        = string
+}
+
+variable "resource_group_location" {
+  description = "The location of the resource group"
+  type        = string
+}
+
+variable "retention_in_days" {
+  description = "The number of days to retain the logs"
+  type        = number
+  default     = 30
+}
+
+variable "tags" {
+  description = "The tags to assign to the resources"
+  type        = map(string)
+  default = {
+    terraform = "true"
   }
 }

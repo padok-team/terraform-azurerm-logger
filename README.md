@@ -1,26 +1,29 @@
-# CLOUD_PROVIDER TYPE Terraform module
+# AZURE Diagnostic Settings Terraform module
 
-Terraform module which creates **TYPE** resources on **CLOUD_PROVIDER**. This module is an abstraction of the [MODULE_NAME](https://github.com/a_great_module) by [@someoneverysmart](https://github.com/someoneverysmart).
+Terraform module which creates a **Diagnostic Settings** resources on **Azurerm**.
 
 ## User Stories for this module
 
-- AATYPE I can be highly available or single zone
-- ...
+- As a DevOps Engineer, I want to be able to create a Diagnostic Settings resource on Azure.
 
 ## Usage
 
 ```hcl
-module "example" {
-  source = "https://github.com/padok-team/terraform-aws-example"
+module "diagnostic_settings" {
+  source = "git@github.com:padok-team/terraform-azurerm-diagnostic-settings.git?ref=v0.0.1"
 
-  example_of_required_variable = "hello_world"
+  resource_group_name     = "my-resource-group"
+  resource_group_location = "my-location"
+
+
+  name      = "test"
+  resources = ["id1", "id2"]
 }
 ```
 
 ## Examples
 
-- [Example of use case](examples/example_of_use_case/main.tf)
-- [Example of other use case](examples/example_of_other_use_case/main.tf)
+- [Keyvault Diagnostic settings](examples/diagnostic-settings-keyvault/main.tf)
 
 <!-- BEGIN_TF_DOCS -->
 ## Modules
@@ -31,13 +34,16 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_example_of_required_variable"></a> [example\_of\_required\_variable](#input\_example\_of\_required\_variable) | Short description of the variable | `string` | n/a | yes |
-| <a name="input_example_with_validation"></a> [example\_with\_validation](#input\_example\_with\_validation) | Short description of the variable | `list(string)` | n/a | yes |
-| <a name="input_example_of_variable_with_default_value"></a> [example\_of\_variable\_with\_default\_value](#input\_example\_of\_variable\_with\_default\_value) | Short description of the variable | `string` | `"default_value"` | no |
+| <a name="input_name"></a> [name](#input\_name) | The name of your diagnostic settings resources | `string` | n/a | yes |
+| <a name="input_resource_group_location"></a> [resource\_group\_location](#input\_resource\_group\_location) | The location of the resource group | `string` | n/a | yes |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group | `string` | n/a | yes |
+| <a name="input_resources"></a> [resources](#input\_resources) | The list of resources id to monitor | `list(string)` | n/a | yes |
+| <a name="input_retention_in_days"></a> [retention\_in\_days](#input\_retention\_in\_days) | The number of days to retain the logs | `number` | `30` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | The tags to assign to the resources | `map(string)` | <pre>{<br>  "terraform": "true"<br>}</pre> | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_example"></a> [example](#output\_example) | A meaningful description |
+| <a name="output_azurerm_log_analytics_workspace"></a> [azurerm\_log\_analytics\_workspace](#output\_azurerm\_log\_analytics\_workspace) | The workspace name |
 <!-- END_TF_DOCS -->
