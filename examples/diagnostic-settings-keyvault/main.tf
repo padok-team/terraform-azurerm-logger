@@ -1,3 +1,4 @@
+# This example deploys a keyvault and configure it to send the keyvault metrics to a log analytics workspace.
 terraform {
   required_version = ">= 0.13.0"
   required_providers {
@@ -12,18 +13,11 @@ provider "azurerm" {
   features {}
 }
 
-resource "random_string" "random" {
-  length  = 5
-  special = false
-  number  = true
-  upper   = false
-}
-
 module "resource_group" {
   ## Specify Version with the ref property
   source = "git@github.com:padok-team/terraform-azurerm-resource-group.git?ref=v0.0.2"
 
-  name     = "example${random_string.random.result}"
+  name     = "examplerg"
   location = "West Europe"
 
   tags = {
@@ -35,7 +29,7 @@ module "resource_group" {
 module "key_vault" {
   source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v0.0.1"
 
-  name                = "mykeyvault${random_string.random.result}"
+  name                = "myexamplekeyvault"
   resource_group_name = module.resource_group.this.name
   sku_name            = "standard"
 
@@ -43,6 +37,10 @@ module "key_vault" {
     terraform = "true"
     padok     = "library"
   }
+
+  depends_on = [
+    module.resource_group
+  ]
 }
 
 module "diagnostic_settings" {
