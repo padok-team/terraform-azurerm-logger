@@ -45,5 +45,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_azurerm_log_analytics_workspace"></a> [azurerm\_log\_analytics\_workspace](#output\_azurerm\_log\_analytics\_workspace) | The workspace name |
+| <a name="output_azurerm_log_analytics_workspace_id"></a> [azurerm\_log\_analytics\_workspace\_id](#output\_azurerm\_log\_analytics\_workspace\_id) | The workspace ID |
 <!-- END_TF_DOCS -->
