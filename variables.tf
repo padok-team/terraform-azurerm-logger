@@ -1,13 +1,13 @@
 variable "resources_to_logs" {
   description = "The list of resources id to log"
   type        = list(string)
-  default = []
+  default     = []
 }
 
 variable "resources_to_metrics" {
   description = "The list of resources id to log"
   type        = list(string)
-  default = []
+  default     = []
 }
 
 variable "name" {
