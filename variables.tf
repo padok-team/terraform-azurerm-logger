@@ -5,7 +5,7 @@ variable "resources_to_logs" {
 }
 
 variable "resources_to_metrics" {
-  description = "The list of resources id to log"
+  description = "The list of resources id to metric"
   type        = list(string)
   default     = []
 }
