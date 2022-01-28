@@ -49,8 +49,9 @@ module "diagnostic_settings" {
   resource_group_name     = module.resource_group.this.name
   resource_group_location = module.resource_group.this.location
 
-
-  name      = "test"
-  resources = [module.key_vault.this.id]
+  name = "test"
+  resources = {
+    module.key_vault.this.id : ["metrics", "logs"]
+  }
 
 }

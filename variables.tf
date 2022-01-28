@@ -1,5 +1,10 @@
-variable "resources" {
-  description = "The list of resources id to monitor"
+variable "resources_to_logs" {
+  description = "The list of resources id to log"
+  type        = list(string)
+}
+
+variable "resources_to_metrics" {
+  description = "The list of resources id to log"
   type        = list(string)
 }
 
