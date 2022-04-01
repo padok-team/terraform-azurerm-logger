@@ -38,3 +38,8 @@ variable "tags" {
     terraform = "true"
   }
 }
+variable "log_analytics_workspace_id" {
+  type = string
+  description = "ID of log analytics workspace if you do not want to create one, but use your own"
+  default = null
+}
