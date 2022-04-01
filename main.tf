@@ -27,8 +27,20 @@ resource "azurerm_monitor_diagnostic_setting" "logs" {
     content {
       category = log.value
       retention_policy {
-        days    = 0
         enabled = false
+        days    = 0
+      }
+    }
+  }
+  // Empty metric to not polute terraform plan/apply
+  dynamic "metric" {
+    for_each = data.azurerm_monitor_diagnostic_categories.logs[count.index].metrics
+    content {
+      category = metric.value
+      enabled  = false
+      retention_policy {
+        enabled = false
+        days    = 0
       }
     }
   }
@@ -45,8 +57,20 @@ resource "azurerm_monitor_diagnostic_setting" "metrics" {
     content {
       category = metric.value
       retention_policy {
-        days    = 0
         enabled = false
+        days    = 0
+      }
+    }
+  }
+  // Empty log to not polute terraform plan/apply
+  dynamic "log" {
+    for_each = data.azurerm_monitor_diagnostic_categories.metrics[count.index].logs
+    content {
+      category = log.value
+      enabled  = false
+      retention_policy {
+        enabled = false
+        days    = 0
       }
     }
   }

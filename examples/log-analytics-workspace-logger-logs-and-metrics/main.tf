@@ -24,7 +24,7 @@ resource "azurerm_resource_group" "resource_group" {
 }
 
 module "key_vault" {
-  source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v1.0.0"
+  source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v0.1.0"
 
   name                = "keyvaultexample"
   resource_group_name = azurerm_resource_group.resource_group.name
