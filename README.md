@@ -11,8 +11,8 @@ Terraform module which creates a **Log Analytics Workspace** and **Diagnostic Se
 ## Usage
 
 ```hcl
-module "diagnostic_settings" {
-  source = "git@github.com:padok-team/terraform-azurerm-diagnostic-settings.git?ref=v1.0.0"
+module "logger" {
+  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.2.0"
 
   resource_group_name     = "my-resource-group"
   resource_group_location = "my-location"
