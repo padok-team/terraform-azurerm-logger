@@ -7,6 +7,7 @@ Terraform module which creates a **Log Analytics Workspace** and **Diagnostic Se
 - AAOps I can create a log analytics workspace and collect logs from Azure resources.
 - AAOps I can create a log analytics workspace and collect metrics from Azure resources.
 - AAOps I can create a log analytics workspace and collect logs and/or metrics from Azure resources.
+- AAUser I can use this module in another to enable log for it  
 
 ## Usage
 
