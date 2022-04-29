@@ -13,7 +13,7 @@ Terraform module which creates a **Log Analytics Workspace** and **Diagnostic Se
 
 ```hcl
 module "logger" {
-  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.2 .0"
+  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.2.0"
 
   resource_group_name     = "my-resource-group"
   resource_group_location = "my-location"
