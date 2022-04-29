@@ -40,7 +40,7 @@ module "key_vault" {
   ]
 }
 
-module "diagnostic_settings" {
+module "logger" {
   source = "../.."
 
   resource_group_name     = azurerm_resource_group.resource_group.name

@@ -7,12 +7,13 @@ Terraform module which creates a **Log Analytics Workspace** and **Diagnostic Se
 - AAOps I can create a log analytics workspace and collect logs from Azure resources.
 - AAOps I can create a log analytics workspace and collect metrics from Azure resources.
 - AAOps I can create a log analytics workspace and collect logs and/or metrics from Azure resources.
+- AAUser I can use this module in another to enable log for it  
 
 ## Usage
 
 ```hcl
-module "diagnostic_settings" {
-  source = "git@github.com:padok-team/terraform-azurerm-diagnostic-settings.git?ref=v1.0.0"
+module "logger" {
+  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.2.0"
 
   resource_group_name     = "my-resource-group"
   resource_group_location = "my-location"

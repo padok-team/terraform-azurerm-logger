@@ -1,4 +1,5 @@
 resource "azurerm_log_analytics_workspace" "this" {
+  count               = var.log_analytics_workspace_id == null ? 1 : 0
   name                = format("%s-workspace", var.name)
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
@@ -20,7 +21,7 @@ resource "azurerm_monitor_diagnostic_setting" "logs" {
   count                          = length(var.resources_to_logs)
   name                           = "Diagnostic_logs"
   target_resource_id             = var.resources_to_logs[count.index]
-  log_analytics_workspace_id     = azurerm_log_analytics_workspace.this.id
+  log_analytics_workspace_id     = try(var.log_analytics_workspace_id,azurerm_log_analytics_workspace.this[0].id)
   log_analytics_destination_type = null
   dynamic "log" {
     for_each = data.azurerm_monitor_diagnostic_categories.logs[count.index].logs
@@ -50,7 +51,7 @@ resource "azurerm_monitor_diagnostic_setting" "metrics" {
   count                          = length(var.resources_to_metrics)
   name                           = "Diagnostic_Metrics"
   target_resource_id             = var.resources_to_metrics[count.index]
-  log_analytics_workspace_id     = azurerm_log_analytics_workspace.this.id
+  log_analytics_workspace_id     = try(var.log_analytics_workspace_id,azurerm_log_analytics_workspace.this[0].id)
   log_analytics_destination_type = null
   dynamic "metric" {
     for_each = data.azurerm_monitor_diagnostic_categories.metrics[count.index].metrics

@@ -40,14 +40,13 @@ module "key_vault" {
   ]
 }
 
-module "diagnostic_settings" {
+module "logger" {
   source = "../.."
 
   resource_group_name     = azurerm_resource_group.resource_group.name
   resource_group_location = azurerm_resource_group.resource_group.location
 
   name = "test"
-
   # I want to monitor both logs and metrics for my keyvault
   resources_to_logs    = [module.key_vault.this.id]
   resources_to_metrics = [module.key_vault.this.id]
