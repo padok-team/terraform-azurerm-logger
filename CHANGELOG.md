@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/padok-team/terraform-azurerm-logger/compare/v0.1.3...v0.1.4) (2022-07-29)
+
+
+### Bug Fixes
+
+* add default value in case a law id is provid ([123430b](https://github.com/padok-team/terraform-azurerm-logger/commit/123430b0e021b85dae7da502a764687ba3a1bfde))
+
 ### [0.1.3](https://github.com/padok-team/terraform-azurerm-logger/compare/v0.1.2...v0.1.3) (2022-04-29)
 
 
