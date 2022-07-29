@@ -13,16 +13,15 @@ variable "resources_to_metrics" {
 variable "name" {
   description = "The name of your diagnostic settings resources"
   type        = string
+  default     = ""
 }
 
-variable "resource_group_name" {
-  description = "The name of the resource group"
-  type        = string
-}
-
-variable "resource_group_location" {
-  description = "The location of the resource group"
-  type        = string
+variable "resource_group" {
+  description = "The resource group resource."
+  type = object({
+    name     = string
+    location = string
+  })
 }
 
 variable "retention_in_days" {

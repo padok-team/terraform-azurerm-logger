@@ -15,11 +15,13 @@ Terraform module which creates a **Log Analytics Workspace** and **Diagnostic Se
 module "logger" {
   source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.2.0"
 
-  resource_group_name     = "my-resource-group"
-  resource_group_location = "my-location"
+  resource_group = {
+    name      = "my-resource-group"
+    locattion = "my-location"
+  }
 
-  name      = "test"
-  resources_to_logs = ["<id-of-resource-1>", "<id-of-resource-2>"]
+  name                 = "test"
+  resources_to_logs    = ["<id-of-resource-1>", "<id-of-resource-2>"]
   resources_to_metrics = ["<id-of-resource-1>"]
 }
 ```
