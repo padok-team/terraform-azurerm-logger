@@ -38,7 +38,7 @@ variable "tags" {
   }
 }
 variable "log_analytics_workspace_id" {
-  type = string
+  type        = string
   description = "ID of log analytics workspace if you do not want to create one, but use your own"
-  default = null
+  default     = null
 }

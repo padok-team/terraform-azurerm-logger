@@ -44,7 +44,7 @@ module "logger" {
   source = "../.."
 
   resource_group = azurerm_resource_group.resource_group
-  
+
 
   name = "test"
   # I want to monitor both logs and metrics for my keyvault
