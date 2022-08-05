@@ -1,0 +1,17 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: terraform-azurerm-logger
+  description: Azure Terraform Module that adds diagnostic settings on all your resources to export logs & metrics.
+  tags:
+    - "terraform"
+    - "azure"
+  annotations:
+    github.com/project-slug: padok-team/terraform-azurerm-logger
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: module
+  system: terraform
+  owner: library-azure
+  lifecycle: awaiting-feedback

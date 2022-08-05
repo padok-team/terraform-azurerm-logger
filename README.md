@@ -7,7 +7,7 @@ Terraform module which creates a **Log Analytics Workspace** and **Diagnostic Se
 - AAOps I can create a log analytics workspace and collect logs from Azure resources.
 - AAOps I can create a log analytics workspace and collect metrics from Azure resources.
 - AAOps I can create a log analytics workspace and collect logs and/or metrics from Azure resources.
-- AAUser I can use this module in another to enable log for it  
+- AAUser I can use this module in another to enable log for it
 
 ## Usage
 
@@ -40,9 +40,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | The name of your diagnostic settings resources | `string` | n/a | yes |
-| <a name="input_resource_group_location"></a> [resource\_group\_location](#input\_resource\_group\_location) | The location of the resource group | `string` | n/a | yes |
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group | `string` | n/a | yes |
+| <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group) | The resource group resource. | <pre>object({<br>    name     = string<br>    location = string<br>  })</pre> | n/a | yes |
+| <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | ID of log analytics workspace if you do not want to create one, but use your own | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | The name of your diagnostic settings resources | `string` | `""` | no |
 | <a name="input_resources_to_logs"></a> [resources\_to\_logs](#input\_resources\_to\_logs) | The list of resources id to log | `list(string)` | `[]` | no |
 | <a name="input_resources_to_metrics"></a> [resources\_to\_metrics](#input\_resources\_to\_metrics) | The list of resources id to metric | `list(string)` | `[]` | no |
 | <a name="input_retention_in_days"></a> [retention\_in\_days](#input\_retention\_in\_days) | The number of days to retain the logs | `number` | `30` | no |
