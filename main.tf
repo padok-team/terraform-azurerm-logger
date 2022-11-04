@@ -1,5 +1,6 @@
 resource "azurerm_log_analytics_workspace" "this" {
-  count               = var.log_analytics_workspace_id == null ? 1 : 0
+  count = var.create_new_workspace ? 1 : 0
+
   name                = format("%s-workspace", var.name)
   location            = var.resource_group.location
   resource_group_name = var.resource_group.name
@@ -7,6 +8,7 @@ resource "azurerm_log_analytics_workspace" "this" {
   retention_in_days   = var.retention_in_days
   tags                = var.tags
 }
+
 data "azurerm_monitor_diagnostic_categories" "logs" {
   count       = length(var.resources_to_logs)
   resource_id = var.resources_to_logs[count.index]
@@ -18,7 +20,8 @@ data "azurerm_monitor_diagnostic_categories" "metrics" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "logs" {
-  count                          = length(var.resources_to_logs)
+  count = length(var.resources_to_logs)
+
   name                           = "Diagnostic_logs"
   target_resource_id             = var.resources_to_logs[count.index]
   log_analytics_workspace_id     = var.log_analytics_workspace_id == null ? azurerm_log_analytics_workspace.this[0].id : var.log_analytics_workspace_id
@@ -48,7 +51,8 @@ resource "azurerm_monitor_diagnostic_setting" "logs" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "metrics" {
-  count                          = length(var.resources_to_metrics)
+  count = length(var.resources_to_metrics)
+
   name                           = "Diagnostic_Metrics"
   target_resource_id             = var.resources_to_metrics[count.index]
   log_analytics_workspace_id     = var.log_analytics_workspace_id == null ? azurerm_log_analytics_workspace.this[0].id : var.log_analytics_workspace_id

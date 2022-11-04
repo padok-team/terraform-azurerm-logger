@@ -21,6 +21,8 @@ module "logger" {
   }
 
   name                 = "test"
+  create_new_workspace = true
+
   resources_to_logs    = ["<id-of-resource-1>", "<id-of-resource-2>"]
   resources_to_metrics = ["<id-of-resource-1>"]
 }
@@ -40,6 +42,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_create_new_workspace"></a> [create\_new\_workspace](#input\_create\_new\_workspace) | Whether a new log analytics workspace should be created. | `bool` | n/a | yes |
 | <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group) | The resource group resource. | <pre>object({<br>    name     = string<br>    location = string<br>  })</pre> | n/a | yes |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | ID of log analytics workspace if you do not want to create one, but use your own | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of your diagnostic settings resources | `string` | `""` | no |
