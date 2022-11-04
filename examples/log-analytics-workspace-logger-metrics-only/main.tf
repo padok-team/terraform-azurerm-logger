@@ -6,6 +6,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = ">=2.82.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "~>3.4"
+    }
   }
 }
 provider "azurerm" {
@@ -23,10 +27,12 @@ resource "azurerm_resource_group" "resource_group" {
   }
 }
 
+resource "random_pet" "random" {}
+
 module "key_vault" {
   source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v0.1.0"
 
-  name                = "keyvaultexample"
+  name                = random_pet.random.id # KeyVault names are globally unique
   resource_group_name = azurerm_resource_group.resource_group.name
   sku_name            = "standard"
 
@@ -45,7 +51,8 @@ module "logger" {
 
   resource_group = azurerm_resource_group.resource_group
 
-  name = "test"
+  name                 = "test"
+  create_new_workspace = true
 
   # I want to monitor only metrics for my keyvault
   resources_to_metrics = [module.key_vault.this.id]
