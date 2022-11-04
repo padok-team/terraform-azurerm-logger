@@ -20,26 +20,19 @@ provider "azurerm" {
 resource "azurerm_resource_group" "resource_group" {
   name     = "my-example-rg"
   location = "westeurope"
-
-  tags = {
-    terraform = "true",
-    padok     = "library"
-  }
 }
 
 resource "random_pet" "random" {}
 
+data "azurerm_client_config" "this" {}
+
 module "key_vault" {
-  source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v0.1.0"
+  source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v0.2.0"
 
-  name                = random_pet.random.id # KeyVault names are globally unique
-  resource_group_name = azurerm_resource_group.resource_group.name
-  sku_name            = "standard"
-
-  tags = {
-    terraform = "true"
-    padok     = "library"
-  }
+  name           = random_pet.random.id # KeyVault names are globally unique
+  resource_group = azurerm_resource_group.resource_group.name
+  tenant_id      = data.azurerm_client_config.this.tenant_id
+  sku_name       = "standard"
 
   depends_on = [
     azurerm_resource_group.resource_group
