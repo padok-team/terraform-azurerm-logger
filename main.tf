@@ -1,7 +1,7 @@
 resource "azurerm_log_analytics_workspace" "this" {
   count = var.create_new_workspace ? 1 : 0
 
-  name                = format("%s-workspace", var.name)
+  name                = var.name
   location            = var.resource_group.location
   resource_group_name = var.resource_group.name
   sku                 = "PerGB2018"
