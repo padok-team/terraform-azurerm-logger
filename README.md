@@ -44,7 +44,7 @@ Example :
 ```hcl
 # Before upgrade
 module "logger" {
-  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.2.0"
+  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.3.0"
 
   name = "test"
   ...
@@ -52,7 +52,7 @@ module "logger" {
 
 # After upgrade
 module "logger" {
-  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.3.0"
+  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.4.0"
 
   name = "test-workspace"
   ...
