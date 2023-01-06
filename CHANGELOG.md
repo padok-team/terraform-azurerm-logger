@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/padok-team/terraform-azurerm-logger/compare/v0.3.0...v0.4.0) (2023-01-06)
+
+
+### Features
+
+* update azurerm provider from 2 to 3 ([bab99e8](https://github.com/padok-team/terraform-azurerm-logger/commit/bab99e821b949a2a22e4791093c79c3594432f4e))
+
 ### [0.1.5](https://github.com/padok-team/terraform-azurerm-logger/compare/v0.3.0...v0.1.5) (2023-01-06)
 
 
