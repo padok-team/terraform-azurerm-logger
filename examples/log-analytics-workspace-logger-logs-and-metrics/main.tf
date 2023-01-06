@@ -4,11 +4,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = ">=2.82.0"
+      version = "~> 3"
     }
     random = {
       source  = "hashicorp/random"
-      version = "~>3.4"
+      version = "~> 3.4"
     }
   }
 }
@@ -17,7 +17,7 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "resource_group" {
+resource "azurerm_resource_group" "this" {
   name     = "my-example-rg"
   location = "westeurope"
 }
@@ -27,22 +27,22 @@ resource "random_pet" "random" {}
 data "azurerm_client_config" "this" {}
 
 module "key_vault" {
-  source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v0.2.0"
+  source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v0.4.0"
 
   name           = random_pet.random.id # KeyVault names are globally unique
-  resource_group = azurerm_resource_group.resource_group.name
+  resource_group = azurerm_resource_group.this
   tenant_id      = data.azurerm_client_config.this.tenant_id
   sku_name       = "standard"
 
   depends_on = [
-    azurerm_resource_group.resource_group
+    azurerm_resource_group.this
   ]
 }
 
 module "logger" {
   source = "../.."
 
-  resource_group = azurerm_resource_group.resource_group
+  resource_group = azurerm_resource_group.this
 
   name                 = "test"
   create_new_workspace = true
