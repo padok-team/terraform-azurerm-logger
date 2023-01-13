@@ -13,7 +13,7 @@ Terraform module which creates a **Log Analytics Workspace** and **Diagnostic Se
 
 ```hcl
 module "logger" {
-  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.1.4"
+  source = "git@github.com:padok-team/terraform-azurerm-logger.git"
 
   resource_group = {
     name      = "my-resource-group"
@@ -32,32 +32,6 @@ module "logger" {
 
 - [Log Analytic Workspace logger collecting logs and metrics](examples/log-analytics-workspace-logger-logs-and-metrics/main.tf)
 - [Log Analytic Workspace logger collecting metrics only](examples/log-analytics-workspace-logger-metrics-only/main.tf)
-
-## Upgrade instructions
-
-### From v0.2.0 to v0.3.0
-
-We removed the `-workspace` suffix in the  `azurerm_log_analytics_workspace` resources.
-To upgrade, change `name` variable to append this suffix in the module's instanciation.
-
-Example :
-```hcl
-# Before upgrade
-module "logger" {
-  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.3.0"
-
-  name = "test"
-  ...
-}
-
-# After upgrade
-module "logger" {
-  source = "git@github.com:padok-team/terraform-azurerm-logger.git?ref=v0.4.0"
-
-  name = "test-workspace"
-  ...
-}
-```
 
 <!-- BEGIN_TF_DOCS -->
 ## Modules
