@@ -25,7 +25,6 @@ resource "azurerm_monitor_diagnostic_setting" "logs" {
   name                           = "Diagnostic_logs"
   target_resource_id             = var.resources_to_logs[count.index]
   log_analytics_workspace_id     = var.log_analytics_workspace_id == null ? azurerm_log_analytics_workspace.this[0].id : var.log_analytics_workspace_id
-  log_analytics_destination_type = null
   dynamic "log" {
     for_each = data.azurerm_monitor_diagnostic_categories.logs[count.index].logs
     content {
@@ -56,7 +55,6 @@ resource "azurerm_monitor_diagnostic_setting" "metrics" {
   name                           = "Diagnostic_Metrics"
   target_resource_id             = var.resources_to_metrics[count.index]
   log_analytics_workspace_id     = var.log_analytics_workspace_id == null ? azurerm_log_analytics_workspace.this[0].id : var.log_analytics_workspace_id
-  log_analytics_destination_type = null
   dynamic "metric" {
     for_each = data.azurerm_monitor_diagnostic_categories.metrics[count.index].metrics
     content {
