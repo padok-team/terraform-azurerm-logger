@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.1](https://github.com/padok-team/terraform-azurerm-logger/compare/v0.4.0...v0.4.1) (2023-01-23)
+
+
+### Bug Fixes
+
+* correct fmt ([8872873](https://github.com/padok-team/terraform-azurerm-logger/commit/887287333ff883df6ef4f981462127cb1df74c88))
+* correct terraform drift for provider &gt; 0.40.x ([9c4f39e](https://github.com/padok-team/terraform-azurerm-logger/commit/9c4f39e7e09cd7f43884fb997a374a0c4f6019e5))
+* **doc:** update logger version in readme ([c858953](https://github.com/padok-team/terraform-azurerm-logger/commit/c858953ee740ce2ba599b9adc0bd27c8fe547724))
+* **doc:** update readme and remove version ([caeb5a7](https://github.com/padok-team/terraform-azurerm-logger/commit/caeb5a7bb4d0cde83116da3edd8754c6cd9e754d))
+
 ## [0.4.0](https://github.com/padok-team/terraform-azurerm-logger/compare/v0.3.0...v0.4.0) (2023-01-06)
 
 
