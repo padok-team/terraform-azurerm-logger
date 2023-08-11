@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/padok-team/terraform-azurerm-logger/compare/v0.4.1...v0.5.0) (2023-08-11)
+
+
+### Features
+
+* update version requirement to match deprecation fix ([6006e3c](https://github.com/padok-team/terraform-azurerm-logger/commit/6006e3c5423b2b2351506b789a60b489839da979))
+
+
+### Bug Fixes
+
+* replace log by enabled_log because of deprecation ([bfc52f9](https://github.com/padok-team/terraform-azurerm-logger/commit/bfc52f935dfbde8cfe46c9998c1a15a0af6ef5ef))
+
 ## [0.4.1](https://github.com/padok-team/terraform-azurerm-logger/compare/v0.4.0...v0.4.1) (2023-01-23)
 
 
