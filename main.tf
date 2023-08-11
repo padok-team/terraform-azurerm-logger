@@ -28,7 +28,7 @@ resource "azurerm_monitor_diagnostic_setting" "logs" {
   dynamic "enabled_log" {
     for_each = data.azurerm_monitor_diagnostic_categories.logs[count.index].logs
     content {
-      category = log.value
+      category = enabled_log.value
       retention_policy {
         enabled = false
         days    = 0
