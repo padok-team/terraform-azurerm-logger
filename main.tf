@@ -25,10 +25,10 @@ resource "azurerm_monitor_diagnostic_setting" "logs" {
   name                       = "Diagnostic_logs"
   target_resource_id         = var.resources_to_logs[count.index]
   log_analytics_workspace_id = var.log_analytics_workspace_id == null ? azurerm_log_analytics_workspace.this[0].id : var.log_analytics_workspace_id
-  dynamic "log" {
+  dynamic "enabled_log" {
     for_each = data.azurerm_monitor_diagnostic_categories.logs[count.index].logs
     content {
-      category = log.value
+      category = enabled_log.value
       retention_policy {
         enabled = false
         days    = 0
@@ -59,18 +59,6 @@ resource "azurerm_monitor_diagnostic_setting" "metrics" {
     for_each = data.azurerm_monitor_diagnostic_categories.metrics[count.index].metrics
     content {
       category = metric.value
-      retention_policy {
-        enabled = false
-        days    = 0
-      }
-    }
-  }
-  // Empty log to not polute terraform plan/apply
-  dynamic "log" {
-    for_each = data.azurerm_monitor_diagnostic_categories.metrics[count.index].logs
-    content {
-      category = log.value
-      enabled  = false
       retention_policy {
         enabled = false
         days    = 0

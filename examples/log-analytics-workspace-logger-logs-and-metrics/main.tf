@@ -27,7 +27,8 @@ resource "random_pet" "random" {}
 data "azurerm_client_config" "this" {}
 
 module "key_vault" {
-  source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v0.4.0"
+  # checkov:skip=CKV_TF_1:Do not want to use commit tags for source ref
+  source = "git@github.com:padok-team/terraform-azurerm-keyvault.git?ref=v0.5.0"
 
   name           = random_pet.random.id # KeyVault names are globally unique
   resource_group = azurerm_resource_group.this
